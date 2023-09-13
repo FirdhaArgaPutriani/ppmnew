@@ -55,6 +55,7 @@
 <script>
     var th2020 = <?php echo json_encode($thn2020);?>;
     var th2021 = <?php echo json_encode($thn2021);?>;
+    var th2022 = <?php echo json_encode($thn2022);?>;
     var label = <?php echo json_encode($label);?>;
     
     
@@ -67,7 +68,7 @@
             data: th2021,
         }, {
             name: '2022',
-            data: [5, 5, 5, 5, 5, 5, 5, 5, 5]
+            data: th2022,
         }],
         chart: {
             type: 'bar',
