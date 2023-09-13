@@ -1,5 +1,17 @@
 <?php
+require_once('connection.php');
+
+session_start();
+if (isset($_SESSION['user'])) {
+    return header('Location: admin_index.php');
+}
+ 
+
 $title = 'Home Admin';
+
+require_once('2020.php');
+require_once('2021.php');
+require_once('2022.php');
 ?>
 
 <?php

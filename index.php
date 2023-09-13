@@ -8,31 +8,10 @@ if (isset($_SESSION['user'])) {
 
 $title = 'Home';
 
-$label = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'];
+require_once('2020.php');
+require_once('2021.php');
+require_once('2022.php');
 
-for ($bulan = 1; $bulan < 13; $bulan++) {
-    $query  = mysqli_query($conn, "SELECT avg(jumlah) as jml from p_stunting where MONTH(tgl_kasus) = $bulan And YEAR(tgl_kasus) = 2020");
-    $row    = $query->fetch_array();
-    $thn2020[] =  $row['jml'];
-
-    echo json_encode($thn2020);
-}
-
-
-?>
-
-<?php
-require_once('connection.php');
-
-$label = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'];
-
-for ($bulan = 1; $bulan < 13; $bulan++) {
-    $query2  = mysqli_query($conn, "SELECT avg(jumlah) as jml from p_stunting where MONTH(tgl_kasus) = $bulan And YEAR(tgl_kasus) = 2021");
-    $row2    = $query2->fetch_array();
-    $thn2021[] =  $row['jml'];
-
-    echo json_encode($thn2021);
-}
 ?>
 
 <?php
