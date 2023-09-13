@@ -7,8 +7,8 @@ $id_germas = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
 $germas = mysqli_fetch_assoc($query);
 
-function getFileIcon($filename)
-{
+
+function getFileIcon($filename) {
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
     $iconMapping = [
@@ -23,7 +23,6 @@ function getFileIcon($filename)
 
     return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
 }
-
 ?>
 
 <?php
@@ -31,7 +30,8 @@ require_once('../layouts/header.php')
 ?>
 
 <body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -197,14 +197,13 @@ require_once('../layouts/header.php')
                                     <?= $germas['text']; ?>
                                 </p>
                                 <p>
-                                    <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
-                                        <i class="<?= getFileIcon($germas['data']); ?>"></i> <?= $germas['data']; ?>
-                                    </a>
+                                <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
+                                <i class="<?= getFileIcon($germas['data']); ?>"></i> <?= $germas['data']; ?>
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <?php
-                    require_once('../layouts/admin/footer.php')
+                    require_once('../layouts/footer.php')
                     ?>
