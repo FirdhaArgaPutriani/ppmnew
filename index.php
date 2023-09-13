@@ -18,6 +18,14 @@ for ($bulan = 1; $bulan < 13; $bulan++) {
     echo json_encode($thn2020);
 }
 
+
+?>
+
+<?php
+require_once('connection.php');
+
+$label = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Des'];
+
 for ($bulan = 1; $bulan < 13; $bulan++) {
     $query2  = mysqli_query($conn, "SELECT avg(jumlah) as jml from p_stunting where MONTH(tgl_kasus) = $bulan And YEAR(tgl_kasus) = 2021");
     $row2    = $query2->fetch_array();
@@ -25,19 +33,6 @@ for ($bulan = 1; $bulan < 13; $bulan++) {
 
     echo json_encode($thn2021);
 }
-
-
-
-// $query3 = "SELECT DATE_FORMAT(tgl_kasus, '%Y-%m') AS bulan, avg(jumlah) as jml3 from p_stunting where YEAR(tgl_kasus) = 2022";
-// $result3 = $conn->query($query3);
-
-// $thn2022 = array();
-// while ($row = $result->fetch_assoc()) {
-//     $thn2022[] =  $row['jml3'];
-// }
-
-// echo json_encode($thn2022);
-
 ?>
 
 <?php
