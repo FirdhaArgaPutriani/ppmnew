@@ -139,13 +139,15 @@ require_once('../layouts/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
+
                                 <form action="" method="GET">
                                     <input type="text" name="query" placeholder="Search..."
                                         style="border: none; padding: 0; background: none; font-size: inherit;">
                                 </form>
                             </div>
                         </div>
-                        <!-- /Search -->
+
+                        <!-- /Login or Logout -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -156,7 +158,6 @@ require_once('../layouts/header.php')
                                 </a>
                             </li>
                             </li>
-                            <!--/ User -->
                         </ul>
                     </div>
                 </nav>

@@ -67,7 +67,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stanting</div>
                         </a>
@@ -190,7 +190,7 @@ require_once('../layouts/admin/header.php')
                                 <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
                             </a>
                         </div>
-                        <!-- Basic Bootstrap Table -->
+                        <!-- Basic Table -->
                         <div class="card">
                             <h5 class="card-header">Germas</h5>
                             <div class="table-responsive text-nowrap">
@@ -199,6 +199,7 @@ require_once('../layouts/admin/header.php')
                                         <tr>
                                             <th>Title</th>
                                             <th>Author</th>
+
                                             <!-- <th>Description</th> -->
                                             <th>Data</th>
                                             <th>Date</th>
@@ -253,7 +254,6 @@ require_once('../layouts/admin/header.php')
                                 </table>
                             </div>
                         </div>
-                        <!--/ Basic Bootstrap Table -->
                     </div>
 
                     <?php

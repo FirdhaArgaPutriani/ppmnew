@@ -7,6 +7,7 @@ $id_germas = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
 $germas = mysqli_fetch_assoc($query);
 
+
 function getFileIcon($filename) {
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -22,6 +23,7 @@ function getFileIcon($filename) {
 
     return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
 }
+
 ?>
 
 <?php
@@ -29,7 +31,6 @@ require_once('../layouts/admin/header.php')
 ?>
 
 <body>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -191,6 +192,7 @@ require_once('../layouts/admin/header.php')
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['author']; ?></li>
                                         <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['text']; ?></li>
+
                                         <li class="list-group-item">Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="download.php?filename=<?= urlencode($germas['data']); ?>"> 
                                         <i class="<?= getFileIcon($germas['data']); ?>"> </i> <?= $germas['data']; ?></li>
                                         <li class="list-group-item">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['tanggal']; ?></li>
