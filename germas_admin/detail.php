@@ -6,6 +6,24 @@ $title = 'Detail Germas';
 $id_germas = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
 $germas = mysqli_fetch_assoc($query);
+
+function getFileIcon($filename)
+{
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    $iconMapping = [
+        'pdf' => 'far fa-file-pdf',
+        'doc' => 'far fa-file-word',
+        'docx' => 'far fa-file-word',
+        'xls' => 'far fa-file-excel',
+        'xlsx' => 'far fa-file-excel',
+        'txt' => 'far fa-file-alt',
+        // Add more file extensions and corresponding icons as needed
+    ];
+
+    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
+}
+
 ?>
 
 <?php
@@ -13,6 +31,7 @@ require_once('../layouts/admin/header.php')
 ?>
 
 <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -173,7 +192,13 @@ require_once('../layouts/admin/header.php')
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['author']; ?></li>
                                         <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['text']; ?></li>
-                                        <li class="list-group-item">Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['data']; ?></li>
+                                        <li class="list-group-item">
+                                            Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                                            <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
+                                                <i class="<?= getFileIcon($germas['data']); ?>"> </i>
+                                                <?= $germas['data']; ?>
+                                            </a>
+                                        </li>
                                         <li class="list-group-item">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $germas['tanggal']; ?></li>
                                     </ul>
                                 </div>

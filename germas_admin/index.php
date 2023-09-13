@@ -48,7 +48,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stanting</div>
                         </a>
@@ -136,7 +136,10 @@ require_once('../layouts/admin/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                                <form action="" method="GET">
+                                    <input type="text" name="query" placeholder="Search..."
+                                        style="border: none; padding: 0; background: none; font-size: inherit;">
+                                </form>
                             </div>
                         </div>
                         <!-- /Search -->
@@ -165,7 +168,7 @@ require_once('../layouts/admin/header.php')
                                 <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
                             </a>
                         </div>
-                        <!-- Basic Bootstrap Table -->
+                        <!-- Basic Table -->
                         <div class="card">
                             <h5 class="card-header">Germas</h5>
                             <div class="table-responsive text-nowrap">
@@ -175,7 +178,7 @@ require_once('../layouts/admin/header.php')
                                             <th>Title</th>
                                             <th>Author</th>
                                             <th>Description</th>
-                                            <th>Data</th>
+                                            <!-- <th>Data</th> -->
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
@@ -185,13 +188,18 @@ require_once('../layouts/admin/header.php')
                                         include('../connection.php');
 
                                         $no = 1;
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas");
+                                        if (isset($_GET['query'])) {
+                                            $search_query = mysqli_real_escape_string($conn, $_GET['query']);
+                                            $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                        } else {
+                                            $get_data = mysqli_query($conn, "SELECT * FROM p_germas");
+                                        }
                                         while ($data = mysqli_fetch_array($get_data)) {
                                         ?>
                                             <tr>
                                                 <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?= $data['judul']; ?></strong></td>
                                                 <td><?= $data['author']; ?></td>
-                                                <td><?= $data['text']; ?></td>
+                                                <!-- <td><?= $data['text']; ?></td> -->
                                                 <td><?= $data['data']; ?></td>
                                                 <td><?= $data['tanggal']; ?></td>
                                                 <td>
@@ -205,7 +213,6 @@ require_once('../layouts/admin/header.php')
                                 </table>
                             </div>
                         </div>
-                        <!--/ Basic Bootstrap Table -->
                     </div>
                     
                     <?php

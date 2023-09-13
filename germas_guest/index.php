@@ -139,10 +139,13 @@ require_once('../layouts/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                                <form action="">
+                                    <input type="text" name="query" placeholder="Search..." style="border: none; padding: 0; background: none; font-size: inherit;" />
+                                </form>
                             </div>
                         </div>
-                        <!-- /Search -->
+
+                        <!-- /Login or Logout -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -153,7 +156,6 @@ require_once('../layouts/header.php')
                                 </a>
                             </li>
                             </li>
-                            <!--/ User -->
                         </ul>
                     </div>
                 </nav>
@@ -170,25 +172,37 @@ require_once('../layouts/header.php')
                         <div class="row">
                             <div class="col-md mb-4 mb-md-0">
                                 <div class="accordion mt-3" id="accordionExample">
-                                    <?php if (!empty($germas)) : ?>
-                                        <?php foreach ($germas as $g) :  ?>
-                                            <div class="card accordion-item active">
-                                                <h2 class="accordion-header" id="headingOne">
-                                                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
-                                                        <?= $g['judul']; ?>
-                                                    </button>
-                                                </h2>
+                                    <?php
+                                    include('../connection.php');
 
-                                                <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $g['tanggal']; ?></p>
-                                                        <p>Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $g['author']; ?></p>
-                                                        <a href="detail.php?id=<?= $g['id']; ?>" class="btn btn-sm rounded-pill btn-outline-primary mr-1">View More</a>
-                                                    </div> 
+                                    $no = 1;
+
+                                    // Check if a search query is present
+                                    if (isset($_GET['query'])) {
+                                        $search_query = mysqli_real_escape_string($conn, $_GET['query']);
+                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                    } else {
+                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas");
+                                    }
+
+                                    while ($data = mysqli_fetch_array($get_data)) {
+                                    ?>
+                                        <div class="card accordion-item active">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                                                    <?= $data['judul']; ?>
+                                                </button>
+                                            </h2>
+
+                                            <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $data['tanggal']; ?></p>
+                                                    <p>Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $data['author']; ?></p>
+                                                    <a href="detail.php?id=<?= $data['id']; ?>" class="btn btn-sm rounded-pill btn-outline-primary mr-1">View More</a>
                                                 </div>
                                             </div>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

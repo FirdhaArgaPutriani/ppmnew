@@ -38,6 +38,7 @@
 
 <!-- Vendors JS -->
 <script src="http://localhost/ppmnew/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<script src="http://localhost/ppmnew/assets/vendor/libs/apex-charts/apexchart.js"></script>
 
 <!-- Main JS -->
 <script src="http://localhost/ppmnew/assets/js/main.js"></script>
@@ -50,3 +51,53 @@
 </body>
 
 </html>
+
+<script>
+    var th2020 = <?php echo json_encode($thn2020);?>;
+    var th2021 = <?php echo json_encode($thn2021);?>;
+    var label = <?php echo json_encode($label);?>;
+    
+    
+    var options = {
+        series: [{
+            name: '2020',
+            data: th2020,
+        }, {
+            name: '2021',
+            data: th2021,
+        }, {
+            name: '2022',
+            data: [5, 5, 5, 5, 5, 5, 5, 5, 5]
+        }],
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: label,
+        },
+        
+        fill: {
+            opacity: 1
+        },
+        
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart1"), options);
+    chart.render();
+</script>

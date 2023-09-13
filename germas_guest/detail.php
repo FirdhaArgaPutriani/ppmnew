@@ -6,6 +6,24 @@ $title = 'Germas';
 $id_germas = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
 $germas = mysqli_fetch_assoc($query);
+
+function getFileIcon($filename)
+{
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    $iconMapping = [
+        'pdf'   => 'far fa-file-pdf',
+        'doc'   => 'far fa-file-word',
+        'docx'  => 'far fa-file-word',
+        'xls'   => 'far fa-file-excel',
+        'xlsx'  => 'far fa-file-excel',
+        'txt'   => 'far fa-file-alt',
+        // Add more file extensions and corresponding icons as needed
+    ];
+
+    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
+}
+
 ?>
 
 <?php
@@ -13,11 +31,12 @@ require_once('../layouts/header.php')
 ?>
 
 <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="http://localhost/ppmnew/index.php" class="app-brand-link">
@@ -144,7 +163,7 @@ require_once('../layouts/header.php')
                                 <input type="text" class="form-control border-0 shadow-none" name="cari" placeholder="Search..." aria-label="Search..." />
                             </div>
                         </div>
-                        
+
 
                         <!-- /Search -->
 
@@ -178,7 +197,9 @@ require_once('../layouts/header.php')
                                     <?= $germas['text']; ?>
                                 </p>
                                 <p>
-                                    <?= $germas['data']; ?>
+                                    <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
+                                        <i class="<?= getFileIcon($germas['data']); ?>"></i> <?= $germas['data']; ?>
+                                    </a>
                                 </p>
                             </div>
                         </div>
