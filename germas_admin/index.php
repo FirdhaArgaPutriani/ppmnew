@@ -213,7 +213,7 @@ require_once('../layouts/admin/header.php')
 
                                         if (isset($_GET['query'])) {
                                             $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%'");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                         } else {
                                             $get_data = mysqli_query($conn, "SELECT * FROM p_germas");
                                         }
