@@ -1,14 +1,15 @@
 <?php
 require_once('../connection.php');
 
-$title = 'Germas';
+$title = 'Stunting';
 
-$id_germas = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
-$germas = mysqli_fetch_assoc($query);
+$id_stunting = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM p_stunting WHERE id = '$id_stunting'");
+$stunting = mysqli_fetch_assoc($query);
 
 
-function getFileIcon($filename) {
+function getFileIcon($filename)
+{
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
     $iconMapping = [
@@ -31,7 +32,7 @@ require_once('../layouts/header.php')
 
 <body>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -65,13 +66,13 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/stanting_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stanting</div>
@@ -90,7 +91,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ranham_guest/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
@@ -117,7 +118,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ipm_guest/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
@@ -135,7 +136,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kemiskinan_guest/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -188,17 +189,18 @@ require_once('../layouts/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Germas / Article /</span> <?= $germas['judul']; ?></h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Stunting / Article /</span> <?= $stunting['judul']; ?></h4>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $germas['judul']; ?></h5>
-                                <div class="card-subtitle text-muted mb-3"><?= $germas['tanggal']; ?>, <?= $germas['author']; ?></div>
+                                <h5 class="card-title"><?= $stunting['judul']; ?></h5>
+                                <div class="card-subtitle text-muted mb-3"><?= $stunting['tanggal']; ?>, <?= $stunting['author']; ?></div>
                                 <p class="card-text">
-                                    <?= $germas['text']; ?>
+                                    <?= $stunting['text']; ?>
                                 </p>
                                 <p>
-                                <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
-                                <i class="<?= getFileIcon($germas['data']); ?>"></i> <?= $germas['data']; ?>
+                                    <a href="download.php?filename=<?= urlencode($stunting['data']); ?>">
+                                        <i class="<?= getFileIcon($stunting['data']); ?>"></i> <?= $stunting['data']; ?>
+                                    </a>
                                 </p>
                             </div>
                         </div>

@@ -66,7 +66,7 @@ require_once('../layouts/admin/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -91,7 +91,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
@@ -118,7 +118,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ipm_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
@@ -136,7 +136,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kemiskinan_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -144,7 +144,7 @@ require_once('../layouts/admin/header.php')
                 </ul>
             </aside>
             <!-- / Menu --!>
-
+            
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->

@@ -1,28 +1,9 @@
 <?php
-require_once('../connection.php');
+require_once('_function.php');
 
-$title = 'Germas';
+$title = 'IPM';
 
-$id_germas = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_germas WHERE id = '$id_germas'");
-$germas = mysqli_fetch_assoc($query);
-
-
-function getFileIcon($filename) {
-    $extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-    $iconMapping = [
-        'pdf'   => 'far fa-file-pdf',
-        'doc'   => 'far fa-file-word',
-        'docx'  => 'far fa-file-word',
-        'xls'   => 'far fa-file-excel',
-        'xlsx'  => 'far fa-file-excel',
-        'txt'   => 'far fa-file-alt',
-        // Add more file extensions and corresponding icons as needed
-    ];
-
-    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
-}
+$ipm = query("SELECT * FROM pm_ipm");
 ?>
 
 <?php
@@ -30,13 +11,11 @@ require_once('../layouts/header.php')
 ?>
 
 <body>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
+
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="http://localhost/ppmnew/index.php" class="app-brand-link">
@@ -65,7 +44,7 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -116,7 +95,7 @@ require_once('../layouts/header.php')
                             <div data-i18n="KLA">KLA</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/ipm_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
@@ -160,12 +139,15 @@ require_once('../layouts/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" name="cari" placeholder="Search..." aria-label="Search..." />
+
+                                <form action="" method="GET">
+                                    <input type="text" name="query" placeholder="Search..."
+                                        style="border: none; padding: 0; background: none; font-size: inherit;">
+                                </form>
                             </div>
                         </div>
 
-
-                        <!-- /Search -->
+                        <!-- /Login or Logout -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -176,7 +158,6 @@ require_once('../layouts/header.php')
                                 </a>
                             </li>
                             </li>
-                            <!--/ User -->
                         </ul>
                     </div>
                 </nav>
@@ -185,25 +166,49 @@ require_once('../layouts/header.php')
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
-                    <!-- Content -->
-
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Germas / Article /</span> <?= $germas['judul']; ?></h4>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $germas['judul']; ?></h5>
-                                <div class="card-subtitle text-muted mb-3"><?= $germas['tanggal']; ?>, <?= $germas['author']; ?></div>
-                                <p class="card-text">
-                                    <?= $germas['text']; ?>
-                                </p>
-                                <p>
-                                <a href="download.php?filename=<?= urlencode($germas['data']); ?>">
-                                <i class="<?= getFileIcon($germas['data']); ?>"></i> <?= $germas['data']; ?>
-                                </p>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">IPM /</span> Article</h4>
+
+                        <!-- Accordion -->
+                        <h5 class="mt-4">IPM</h5>
+                        <div class="row">
+                            <div class="col-md mb-4 mb-md-0">
+                                <div class="accordion mt-3" id="accordionExample">
+                                    <?php
+                                    include('../connection.php');
+
+                                    $no = 1;
+                                    
+                                    // Check if a search query is present
+                                    if (isset($_GET['query'])) {
+                                        $search_query = mysqli_real_escape_string($conn, $_GET['query']);
+                                        $get_data = mysqli_query($conn, "SELECT * FROM pm_ipm WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                    } else {
+                                        $get_data = mysqli_query($conn, "SELECT * FROM pm_ipm ORDER BY tanggal DESC");
+                                    }
+
+                                    while ($data = mysqli_fetch_array($get_data)) {
+                                    ?>
+                                        <div class="card accordion-item active">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                                                    <?= $data['judul']; ?>
+                                                </button>
+                                            </h2>
+
+                                            <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $data['tanggal']; ?></p>
+                                                    <p>Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $data['author']; ?></p>
+                                                    <a href="detail.php?id=<?= $data['id']; ?>" class="btn btn-sm rounded-pill btn-outline-primary mr-1">View More</a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <?php
                     require_once('../layouts/footer.php')
                     ?>

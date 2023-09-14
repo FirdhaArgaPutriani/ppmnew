@@ -78,7 +78,7 @@ require_once('layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ranham_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
@@ -105,7 +105,7 @@ require_once('layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ipm_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
@@ -123,7 +123,7 @@ require_once('layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kemiskinan_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -194,7 +194,7 @@ require_once('layouts/header.php')
                                 </div>
                             </div>
 
-                            <!-- Total Revenue -->
+                            <!-- Stanting -->
                             <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
                                 <div class="card">
                                     <div class="row row-bordered g-0">
