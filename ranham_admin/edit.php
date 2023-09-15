@@ -1,11 +1,11 @@
 <?php
 require_once('../connection.php');
 
-$title = 'Edit Stunting';
+$title = 'Edit Ranham';
 
-$id_stunting = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_stunting WHERE id = $id_stunting");
-$stunting = mysqli_fetch_assoc($query);
+$id_ranham = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM p_ranham WHERE id = $id_ranham");
+$ranham = mysqli_fetch_assoc($query);
 
 if (isset($_POST['submit'])) {
     $judul      = $_POST['judul'];
@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $tgl        = date('Y-m-d', strtotime('now'));
 
     if ($_FILES['file']['tmp_name']) {
-        $target_dir     = '../assets/data/stunting/';
+        $target_dir     = '../assets/data/ranham/';
         $target_file    = $target_dir . $_FILES['file']['name'];
         $uploadOk       = 1;
         $fileType       = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
                 
                 $data   = $_FILES['file']['name'];
     
-                mysqli_query($conn, "UPDATE p_stunting SET judul = '$judul', author = '$author', tgl_kasus = '$tgl_kasus', jumlah = '$jumlah', text = '$desc', data = '$data', tanggal = '$tgl' WHERE id = '$id_germas'");
+                mysqli_query($conn, "UPDATE p_ranham SET judul = '$judul', author = '$author', tgl_kasus = '$tgl_kasus', jumlah = '$jumlah', text = '$desc', data = '$data', tanggal = '$tgl' WHERE id = '$id_ranham'");
     
                 if (mysqli_affected_rows($conn) > 0) {
                     return header('Location: index.php');
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
             }
         }
     } else {
-		mysqli_query($conn, "UPDATE p_stunting SET judul = '$judul', author = '$author', tgl_kasus = '$tgl_kasus', jumlah = '$jumlah', text = '$desc', data = '$data' WHERE id = '$id_germas'");
+		mysqli_query($conn, "UPDATE p_ranham SET judul = '$judul', author = '$author', tgl_kasus = '$tgl_kasus', jumlah = '$jumlah', text = '$desc', data = '$data' WHERE id = '$id_ranham'");
 
 		if (mysqli_affected_rows($conn) > 0) {
 			return header('Location: index.php');
@@ -92,7 +92,7 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="Germas">Germas</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stunting</div>
@@ -110,7 +110,7 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
@@ -165,6 +165,7 @@ require_once('../layouts/admin/header.php')
             </aside>
             <!-- / Menu --!>
 
+
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
@@ -206,7 +207,7 @@ require_once('../layouts/admin/header.php')
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Stunting / Table Stunting /</span> Edit Data</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Ranham / Table Ranham /</span> Edit Data</h4>
 
                         <div class="row">
                             <!-- Form controls -->
@@ -217,11 +218,11 @@ require_once('../layouts/admin/header.php')
                                         <div class="card-body">
                                             <div class="mb-3">
                                                 <label for="judul" class="form-label">Title</label>
-                                                <input type="text" class="form-control" id="judul" name="judul" value="<?= $stunting['judul']; ?>" />
+                                                <input type="text" class="form-control" id="judul" name="judul" value="<?= $ranham['judul']; ?>" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="author" class="form-label">Author</label>
-                                                <input type="text" class="form-control" id="author" name="author" value="<?= $stunting['author']; ?>" />
+                                                <input type="text" class="form-control" id="author" name="author" value="<?= $ranham['author']; ?>" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="date" class="form-label">Date</label>
@@ -229,19 +230,19 @@ require_once('../layouts/admin/header.php')
                                             </div>
                                             <div class="mb-3">
                                                 <label for="author" class="form-label">Date of Cases</label>
-                                                <input type="date" class="form-control" id="tgl_kasus" name="tgl_kasus" value="<?= $stunting['author']; ?>" />
+                                                <input type="date" class="form-control" id="tgl_kasus" name="tgl_kasus" value="<?= $ranham['author']; ?>" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="author" class="form-label">Number of Cases</label>
-                                                <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Number of Cases" value="<?= $stunting['author']; ?>"/>
+                                                <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Number of Cases" value="<?= $ranham['author']; ?>"/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="deskripsi" class="form-label">Description</label>
-                                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"><?= $stunting['text']; ?></textarea>
+                                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"><?= $ranham['text']; ?></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="file" class="form-label">Input Data</label>
-                                                <meta src="../assets/data/stunting/<?= $stunting['data']; ?>">
+                                                <meta src="../assets/data/ranham/<?= $ranham['data']; ?>">
                                                 <input class="form-control" type="file" id="file" name="file"  accept=".docx, .xlsx, .ppt, image/*, .xls, .doc, .txt, .pdf" multiple />
                                             </div>
                                             <div class="demo-inline-spacing">

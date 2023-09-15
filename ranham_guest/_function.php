@@ -18,10 +18,10 @@ function query($sql)
 	return [];
 }
 
-function cek_germas($germas_id)
+function cek_ranham($ranham_id)
 {
 	global $conn;
 
-	$query = mysqli_query($conn, "SELECT * FROM p_germas WHERE produk_id = '$germas_id'");
+	$query = mysqli_query($conn, "SELECT * FROM p_ranham WHERE produk_id = '$ranham_id'");
 	$result = mysqli_fetch_assoc($query);
 }

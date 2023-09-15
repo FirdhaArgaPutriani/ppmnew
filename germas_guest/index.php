@@ -51,7 +51,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/stanting_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stanting</div>
                         </a>
@@ -69,7 +69,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ranham_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
@@ -96,7 +96,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/ipm_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
@@ -114,7 +114,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kemiskinan_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -184,7 +184,7 @@ require_once('../layouts/header.php')
                                         $search_query = mysqli_real_escape_string($conn, $_GET['query']);
                                         $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                     } else {
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas");
+                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas ORDER BY tanggal DESC");
                                     }
 
                                     while ($data = mysqli_fetch_array($get_data)) {
