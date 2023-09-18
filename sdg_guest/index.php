@@ -44,7 +44,7 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -74,8 +74,8 @@ require_once('../layouts/header.php')
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="http://localhost/ppmnew/sdg_guest/index.php" class="menu-link">
+                    <li class="menu-item active">
+                        <a href=http://localhost/ppmnew/sdg_guest/index.php class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>

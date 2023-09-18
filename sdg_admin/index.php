@@ -125,7 +125,6 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-
                         <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
