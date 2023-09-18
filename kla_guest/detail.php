@@ -1,36 +1,48 @@
 <?php
-require_once('connection.php');
+require_once('../connection.php');
 
-session_start();
-if (isset($_SESSION['user'])) {
-    return header('Location: admin_index.php');
+$title = 'KLA';
+
+$id_kla = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM pm_kla WHERE id = '$id_kla'");
+$kla = mysqli_fetch_assoc($query);
+
+
+function getFileIcon($filename) {
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    $iconMapping = [
+        'pdf'   => 'far fa-file-pdf',
+        'doc'   => 'far fa-file-word',
+        'docx'  => 'far fa-file-word',
+        'xls'   => 'far fa-file-excel',
+        'xlsx'  => 'far fa-file-excel',
+        'txt'   => 'far fa-file-alt',
+        // Add more file extensions and corresponding icons as needed
+    ];
+
+    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
 }
-
-$title = 'Home';
-
-require_once('2020.php');
-require_once('2021.php');
-require_once('2022.php');
-
 ?>
 
 <?php
-require_once('layouts/header.php')
+require_once('../layouts/header.php')
 ?>
 
 <body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="http://localhost/ppmnew/index.php" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <img src="http://localhost/ppmnew/assets/img/favicon/ppm-new.png" width="70">
                         </span>
-                        <!-- <span class="app-brand-text demo menu-text fw-bolder ms-2">PPM</span> -->
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -42,7 +54,7 @@ require_once('layouts/header.php')
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
@@ -53,7 +65,7 @@ require_once('layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -84,7 +96,7 @@ require_once('layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href=http://localhost/ppmnew/sdg_guest/index.php class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
@@ -99,7 +111,7 @@ require_once('layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kla_guest/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
@@ -148,9 +160,11 @@ require_once('layouts/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                                <input type="text" class="form-control border-0 shadow-none" name="cari" placeholder="Search..." aria-label="Search..." />
                             </div>
                         </div>
+
+
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -172,44 +186,24 @@ require_once('layouts/header.php')
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
+
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Welcome To PPM!</h5>
-                                                <p class="mb-0 text-justify">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Elementum tempus egestas sed sed risus. Vulputate eu scelerisque felis imperdiet. Arcu risus quis varius quam quisque id diam vel. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Vitae justo eget magna fermentum iaculis eu. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Massa massa ultricies mi quis hendrerit dolor magna eget est. Sed augue lacus viverra vitae. Adipiscing diam donec adipiscing tristique risus nec feugiat. Leo vel fringilla est ullamcorper eget nulla. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Laoreet non curabitur gravida arcu.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="text-center mb-4">
-                                                <img src="http://localhost/ppmnew/assets/img/illustrations/man-with-laptop-light.png" height="200" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Stanting -->
-                            <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-                                <div class="card">
-                                    <div class="row row-bordered g-0">
-                                        <div class="col-md-12">
-                                            <h5 class="card-header m-0 me-2 pb-3">Stanting</h5>
-                                            <div id="chart1" class="px-2">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">KLA / Article /</span> <?= $kla['judul']; ?></h4>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $kla['judul']; ?></h5>
+                                <div class="card-subtitle text-muted mb-3"><?= $kla['tanggal']; ?>, <?= $kla['author']; ?></div>
+                                <p class="card-text">
+                                    <?= $kla['text']; ?>
+                                </p>
+                                <p>
+                                <a href="download.php?filename=<?= urlencode($kla['data']); ?>">
+                                <i class="<?= getFileIcon($kla['data']); ?>"></i> <?= $kla['data']; ?>
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <?php
-                    require_once('layouts/footer.php')
+                    require_once('../layouts/footer.php')
                     ?>

@@ -1,5 +1,5 @@
 <?php
-$title = 'SDG Admin';
+$title = 'KLA Admin';
 
 function getFileIcon($filename)
 {
@@ -73,25 +73,25 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/atm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                       <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
-                        <a href="http://localhost/ppmnew/sdg_admin/index.php" class="menu-link">
+                    <li class="menu-item">
+                        <a href=http://localhost/ppmnew/sdg_guest/index.php class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
@@ -101,38 +101,37 @@ require_once('../layouts/admin/header.php')
                             Manusia</span></li>
 
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-male-sign"></i>
                             <div data-i18n="Gender">Gender</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kla_admin/index.php" class="menu-link">
+                    <li class="menu-item active">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ipm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kebudayaan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-
-                        <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kemiskinan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -184,16 +183,16 @@ require_once('../layouts/admin/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">SDG /</span> Table SDG
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">KLA /</span> Table KLA
                         </h4>
                         <div class="card-body">
-                            <a href="http://localhost/ppmnew/sdg_admin/tambah.php">
+                            <a href="http://localhost/ppmnew/kla_admin/tambah.php">
                                 <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
                             </a>
                         </div>
                         <!-- Basic Table -->
                         <div class="card">
-                            <h5 class="card-header">SDG</h5>
+                            <h5 class="card-header">KLA</h5>
                             <div class="table-responsive text-nowrap">
                                 <table class="table">
                                     <thead>
@@ -215,9 +214,9 @@ require_once('../layouts/admin/header.php')
 
                                         if (isset($_GET['query'])) {
                                             $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_sdg WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_kla WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                         } else {
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_sdg");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_kla");
                                         }
 
                                         while ($data = mysqli_fetch_array($get_data)) {
