@@ -1,29 +1,35 @@
 <?php
 require_once('../connection.php');
 
-$title = 'Detail ATM';
+$title = 'Input Pendidikan';
 
-$id_atm = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_atm WHERE id = '$id_atm'");
-$atm = mysqli_fetch_assoc($query);
+if (isset($_POST['submit'])) {
+    $target_dir     = '../assets/data/pendidikan/';
+    $target_file    = $target_dir . $_FILES['file']['name'];
+    $uploadOk       = 1;
+    $fileType       = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+    $allowedFormats = array('.docx', '.xlsx', '.ppt', 'image/*', '.xls', '.doc', '.txt', '.pdf');
 
-function getFileIcon($filename) {
-    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($uploadOk == 0) {
+        echo 'Sorry, your file was not uploaded.';
+    } else {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+            
+            $judul  = $_POST['judul'];
+            $author = $_POST['author'];
+            $desc   = $_POST['deskripsi'];
+            $data   = $_FILES['file']['name'];
+            $tgl    = date('Y-m-d', strtotime('now'));
 
-    $iconMapping = [
-        'pdf' => 'far fa-file-pdf',
-        'doc' => 'far fa-file-word',
-        'docx' => 'far fa-file-word',
-        'xls' => 'far fa-file-excel',
-        'xlsx' => 'far fa-file-excel',
-        'txt' => 'far fa-file-alt',
-        // Add more file extensions and corresponding icons as needed
-    ];
+            mysqli_query($conn, "INSERT INTO p_pendidikan (judul, author, text, data, tanggal) VALUES ('$judul', '$author', '$desc', '$data', '$tgl')");
 
-    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
+            if (mysqli_affected_rows($conn) > 0) {
+                return header('Location: index.php');
+            }
+        }
+    }
 }
-
 ?>
 
 <?php
@@ -31,7 +37,6 @@ require_once('../layouts/admin/header.php')
 ?>
 
 <body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -79,7 +84,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/atm_guest/index.php" class="menu-link">
+                        <a href="http://localhost/ppmnew/atm_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
@@ -118,7 +123,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ipm_admin/index.php" class="menu-link">
+                        <a href="http://localhost/ppmnew/ppm_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
@@ -180,23 +185,46 @@ require_once('../layouts/admin/header.php')
                     </div>
                 </nav>
 
+                <!-- / Navbar -->
+
+                <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
-
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">ATM / Table ATM /</span> Detail <?= $atm['judul']; ?></h4>
-                        <div class="row mb-5">
-                            <div class="col-md-6 col-lg-12">
-                                <h5 class="mt-2 text-muted"><?= $atm['judul']; ?></h5>
-                                <div class="card mb-4">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['author']; ?></li>
-                                        <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['text']; ?></li>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pendidikan / Table Pendidikan /</span> Input Data</h4>
 
-                                        <li class="list-group-item">Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="download.php?filename=<?= urlencode($atm['data']); ?>"> 
-                                        <i class="<?= getFileIcon($atm['data']); ?>"> </i> <?= $atm['data']; ?></li>
-                                        <li class="list-group-item">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['tanggal']; ?></li>
-                                    </ul>
+                        <div class="row">
+                            <!-- Form controls -->
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <h5 class="card-header">Form Input</h5>
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="judul" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Tilte" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="author" class="form-label">Author</label>
+                                                <input type="text" class="form-control" id="author" name="author" placeholder="Author Name" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="date" class="form-label">Date</label>
+                                                <input class="form-control" type="text" id="date" nama="date" placeholder="<?= date('YmdHis'); ?>" readonly />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="deskripsi" class="form-label">Description</label>
+                                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="file" class="form-label">Input Data</label>
+                                                <input class="form-control" type="file" id="file" name="file" accept=".docx, .xlsx, .ppt, image/*, .xls, .doc, .txt, .pdf" multiple />
+                                            </div>
+                                            <div class="demo-inline-spacing">
+                                                <button type="submit" name="submit" id="submit" class="btn rounded-pill btn-primary">Save Data</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -186,7 +186,7 @@ require_once('../layouts/admin/header.php')
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">ATM /</span> Table ATM
                         </h4>
                         <div class="card-body">
-                            <a href="http://localhost/ppmnew/ATM_admin/tambah.php">
+                            <a href="http://localhost/ppmnew/atm_admin/tambah.php">
                                 <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
                             </a>
                         </div>
@@ -214,9 +214,9 @@ require_once('../layouts/admin/header.php')
 
                                         if (isset($_GET['query'])) {
                                             $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_ATM WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM p_atm WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                         } else {
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_ATM");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM p_atm");
                                         }
 
                                         while ($data = mysqli_fetch_array($get_data)) {

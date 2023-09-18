@@ -96,7 +96,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/sdg_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
@@ -111,7 +111,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
+                        <a href="http://localhost/ppmnew/ranham_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
@@ -188,10 +188,10 @@ require_once('../layouts/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">ATM / Article /</span> <?= $ATM['judul']; ?></h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">ATM / Article /</span> <?= $atm['judul']; ?></h4>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $ATM['judul']; ?></h5>
+                                <h5 class="card-title"><?= $atm['judul']; ?></h5>
                                 <div class="card-subtitle text-muted mb-3"><?= $atm['tanggal']; ?>, <?= $atm['author']; ?></div>
                                 <p class="card-text">
                                     <?= $atm['text']; ?>

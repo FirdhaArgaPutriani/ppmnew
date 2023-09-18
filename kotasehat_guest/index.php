@@ -1,9 +1,9 @@
 <?php
 require_once('_function.php');
 
-$title = 'Germas';
+$title = 'Kota Sehat';
 
-$germas = query("SELECT * FROM p_germas");
+$kotasehat = query("SELECT * FROM p_kotasehat");
 ?>
 
 <?php
@@ -57,7 +57,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/atm_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
@@ -75,7 +75,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/sdg_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
@@ -84,13 +84,13 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
 
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/gender_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-male-sign"></i>
                             <div data-i18n="Gender">Gender</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kla_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
@@ -102,13 +102,13 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kebudayaan_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/pendidikan_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
                         </a>
@@ -167,10 +167,10 @@ require_once('../layouts/header.php')
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Germas /</span> Article</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kota Sehat /</span> Article</h4>
 
                         <!-- Accordion -->
-                        <h5 class="mt-4">Germas</h5>
+                        <h5 class="mt-4">Kota Sehat</h5>
                         <div class="row">
                             <div class="col-md mb-4 mb-md-0">
                                 <div class="accordion mt-3" id="accordionExample">
@@ -182,9 +182,9 @@ require_once('../layouts/header.php')
                                     // Check if a search query is present
                                     if (isset($_GET['query'])) {
                                         $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                        $get_data = mysqli_query($conn, "SELECT * FROM p_kotasehat WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                     } else {
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_germas ORDER BY tanggal DESC");
+                                        $get_data = mysqli_query($conn, "SELECT * FROM p_kotasehat ORDER BY tanggal DESC");
                                     }
 
                                     while ($data = mysqli_fetch_array($get_data)) {

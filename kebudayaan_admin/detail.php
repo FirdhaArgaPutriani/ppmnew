@@ -1,11 +1,11 @@
 <?php
 require_once('../connection.php');
 
-$title = 'Detail ATM';
+$title = 'Detail Kebudayaan';
 
-$id_atm = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_atm WHERE id = '$id_atm'");
-$atm = mysqli_fetch_assoc($query);
+$id_kebudayaan = $_GET['id'];
+$query = mysqli_query($conn, "SELECT * FROM p_kebudayaan WHERE id = '$id_kebudayaan'");
+$kebudayaan = mysqli_fetch_assoc($query);
 
 
 function getFileIcon($filename) {
@@ -79,7 +79,7 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/atm_guest/index.php" class="menu-link">
+                        <a href="http://localhost/ppmnew/atm_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
@@ -184,18 +184,18 @@ require_once('../layouts/admin/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">ATM / Table ATM /</span> Detail <?= $atm['judul']; ?></h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kebudayaan / Table Kebudayaan /</span> Detail <?= $kebudayaan['judul']; ?></h4>
                         <div class="row mb-5">
                             <div class="col-md-6 col-lg-12">
-                                <h5 class="mt-2 text-muted"><?= $atm['judul']; ?></h5>
+                                <h5 class="mt-2 text-muted"><?= $kebudayaan['judul']; ?></h5>
                                 <div class="card mb-4">
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['author']; ?></li>
-                                        <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['text']; ?></li>
+                                        <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kebudayaan['author']; ?></li>
+                                        <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp; : <?= $kebudayaan['text']; ?></li>
 
-                                        <li class="list-group-item">Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="download.php?filename=<?= urlencode($atm['data']); ?>"> 
-                                        <i class="<?= getFileIcon($atm['data']); ?>"> </i> <?= $atm['data']; ?></li>
-                                        <li class="list-group-item">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $atm['tanggal']; ?></li>
+                                        <li class="list-group-item">Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="download.php?filename=<?= urlencode($kebudayaan['data']); ?>"> 
+                                        <i class="<?= getFileIcon($kebudayaan['data']); ?>"> </i> <?= $kebudayaan['data']; ?></li>
+                                        <li class="list-group-item">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kebudayaan['tanggal']; ?></li>
                                     </ul>
                                 </div>
                             </div>
