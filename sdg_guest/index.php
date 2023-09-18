@@ -74,7 +74,7 @@ require_once('../layouts/header.php')
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
@@ -89,7 +89,7 @@ require_once('../layouts/header.php')
                             <div data-i18n="Gender">Gender</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
