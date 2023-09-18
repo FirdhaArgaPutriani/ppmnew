@@ -4,7 +4,7 @@ require_once('../connection.php');
 $title = 'Gender';
 
 $id_gender = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_gender WHERE id = '$id_gender'");
+$query = mysqli_query($conn, "SELECT * FROM pm_gender WHERE id = '$id_gender'");
 $gender = mysqli_fetch_assoc($query);
 
 
@@ -191,7 +191,7 @@ require_once('../layouts/header.php')
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Gender / Article /</span> <?= $gender['judul']; ?></h4>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $Gender['judul']; ?></h5>
+                                <h5 class="card-title"><?= $gender['judul']; ?></h5>
                                 <div class="card-subtitle text-muted mb-3"><?= $gender['tanggal']; ?>, <?= $gender['author']; ?></div>
                                 <p class="card-text">
                                     <?= $gender['text']; ?>

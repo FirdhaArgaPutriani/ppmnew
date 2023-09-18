@@ -4,7 +4,7 @@ require_once('../connection.php');
 $title = 'Kebudayaan';
 
 $id_kebudayaan = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_kebudayaan WHERE id = '$id_kebudayaan'");
+$query = mysqli_query($conn, "SELECT * FROM pm_kebudayaan WHERE id = '$id_kebudayaan'");
 $kebudayaan = mysqli_fetch_assoc($query);
 
 
@@ -96,7 +96,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/sdg_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>

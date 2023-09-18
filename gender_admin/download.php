@@ -6,7 +6,7 @@ $filename = isset($_GET['filename']) ? $_GET['filename'] : '';
 if (!empty($filename)) {
     // Specify the directory path where your files are stored
 
-    $fileDirectory = 'D:/xampp/htdocs/ppmnew/assets/data/gender/';
+    $fileDirectory = '../assets/data/gender/';
 
     // Combine the directory path and filename
     $filePath = $fileDirectory . $filename;

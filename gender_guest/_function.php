@@ -22,6 +22,6 @@ function cek_gender($gender_id)
 {
 	global $conn;
 
-	$query = mysqli_query($conn, "SELECT * FROM p_gender WHERE produk_id = '$gender_id'");
+	$query = mysqli_query($conn, "SELECT * FROM pm_gender WHERE produk_id = '$gender_id'");
 	$result = mysqli_fetch_assoc($query);
 }

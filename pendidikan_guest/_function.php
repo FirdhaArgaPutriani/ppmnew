@@ -22,6 +22,6 @@ function cek_pendidikan($pendidikan_id)
 {
 	global $conn;
 
-	$query = mysqli_query($conn, "SELECT * FROM p_pendidikan WHERE produk_id = '$pendidikan_id'");
+	$query = mysqli_query($conn, "SELECT * FROM pm_pendidikan WHERE produk_id = '$pendidikan_id'");
 	$result = mysqli_fetch_assoc($query);
 }

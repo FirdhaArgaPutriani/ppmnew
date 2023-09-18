@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
             $data   = $_FILES['file']['name'];
             $tgl    = date('Y-m-d', strtotime('now'));
 
-            mysqli_query($conn, "INSERT INTO p_kebudayaan (judul, author, text, data, tanggal) VALUES ('$judul', '$author', '$desc', '$data', '$tgl')");
+            mysqli_query($conn, "INSERT INTO pm_kebudayaan (judul, author, text, data, tanggal) VALUES ('$judul', '$author', '$desc', '$data', '$tgl')");
 
             if (mysqli_affected_rows($conn) > 0) {
                 return header('Location: index.php');

@@ -4,7 +4,7 @@ require_once('../connection.php');
 $title = 'Detail Kebudayaan';
 
 $id_kebudayaan = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_kebudayaan WHERE id = '$id_kebudayaan'");
+$query = mysqli_query($conn, "SELECT * FROM pm_kebudayaan WHERE id = '$id_kebudayaan'");
 $kebudayaan = mysqli_fetch_assoc($query);
 
 

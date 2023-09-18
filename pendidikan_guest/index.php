@@ -3,7 +3,7 @@ require_once('_function.php');
 
 $title = 'Pendidikan';
 
-$pendidikan = query("SELECT * FROM p_pendidikan");
+$pendidikan = query("SELECT * FROM pm_pendidikan");
 ?>
 
 <?php
@@ -182,9 +182,9 @@ require_once('../layouts/header.php')
                                     // Check if a search query is present
                                     if (isset($_GET['query'])) {
                                         $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_pendidikan WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                        $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                     } else {
-                                        $get_data = mysqli_query($conn, "SELECT * FROM p_pendidikan ORDER BY tanggal DESC");
+                                        $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan ORDER BY tanggal DESC");
                                     }
 
                                     while ($data = mysqli_fetch_array($get_data)) {

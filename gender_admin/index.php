@@ -60,7 +60,7 @@ require_once('../layouts/admin/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -100,7 +100,7 @@ require_once('../layouts/admin/header.php')
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan
                             Manusia</span></li>
 
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-male-sign"></i>
                             <div data-i18n="Gender">Gender</div>

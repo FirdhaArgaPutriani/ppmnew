@@ -4,7 +4,7 @@ require_once('../connection.php');
 $title = 'Edit Pendidikan';
 
 $id_pendidikan = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM p_pendidikan WHERE id = $id_pendidikan");
+$query = mysqli_query($conn, "SELECT * FROM pm_pendidikan WHERE id = $id_pendidikan");
 $pendidikan = mysqli_fetch_assoc($query);
 
 if (isset($_POST['submit'])) {
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
                 
                 $data   = $_FILES['file']['name'];
     
-                mysqli_query($conn, "UPDATE p_pendidikan SET judul = '$judul', author = '$author', text = '$desc', data = '$data', tanggal = '$tgl' WHERE id = '$id_pendidikan'");
+                mysqli_query($conn, "UPDATE pm_pendidikan SET judul = '$judul', author = '$author', text = '$desc', data = '$data', tanggal = '$tgl' WHERE id = '$id_pendidikan'");
     
                 if (mysqli_affected_rows($conn) > 0) {
                     return header('Location: index.php');
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
             }
         }
     } else {
-		mysqli_query($conn, "UPDATE p_pendidikan SET judul = '$judul', author = '$author', text = '$desc', data = '$data' WHERE id = '$id_pendidikan'");
+		mysqli_query($conn, "UPDATE pm_pendidikan SET judul = '$judul', author = '$author', text = '$desc', data = '$data' WHERE id = '$id_pendidikan'");
 
 		if (mysqli_affected_rows($conn) > 0) {
 			return header('Location: index.php');

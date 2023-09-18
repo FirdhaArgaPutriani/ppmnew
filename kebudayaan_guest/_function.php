@@ -22,6 +22,6 @@ function cek_kebudayaan($kebudayaan_id)
 {
 	global $conn;
 
-	$query = mysqli_query($conn, "SELECT * FROM p_kebudayaan WHERE produk_id = '$kebudayaan_id'");
+	$query = mysqli_query($conn, "SELECT * FROM pm_kebudayaan WHERE produk_id = '$kebudayaan_id'");
 	$result = mysqli_fetch_assoc($query);
 }

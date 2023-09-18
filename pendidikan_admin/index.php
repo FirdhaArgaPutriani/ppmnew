@@ -60,7 +60,7 @@ require_once('../layouts/admin/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -124,7 +124,7 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
@@ -214,9 +214,9 @@ require_once('../layouts/admin/header.php')
 
                                         if (isset($_GET['query'])) {
                                             $search_query = mysqli_real_escape_string($conn, $_GET['query']);
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_pendidikan WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
                                         } else {
-                                            $get_data = mysqli_query($conn, "SELECT * FROM p_pendidikan");
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan");
                                         }
 
                                         while ($data = mysqli_fetch_array($get_data)) {
