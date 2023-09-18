@@ -1,24 +1,30 @@
 <?php
-require_once('connection.php');
+$title = 'Pendidikan Admin';
 
-session_start();
-if (isset($_SESSION['user'])) {
-    return header('Location: admin_index.php');
+function getFileIcon($filename)
+{
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    $iconMapping = [
+        'pdf' => 'far fa-file-pdf',
+        'doc' => 'far fa-file-word',
+        'docx' => 'far fa-file-word',
+        'xls' => 'far fa-file-excel',
+        'xlsx' => 'far fa-file-excel',
+        'txt' => 'far fa-file-alt',
+        // Add more file extensions and corresponding icons as needed
+    ];
+
+    return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
 }
- 
-
-$title = 'Home Admin';
-
-require_once('2020.php');
-require_once('2021.php');
-require_once('2022.php');
 ?>
 
 <?php
-require_once('layouts/admin/header.php')
-?>
+require_once('../layouts/admin/header.php')
+    ?>
 
 <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -33,7 +39,8 @@ require_once('layouts/admin/header.php')
                         <!-- <span class="app-brand-text demo menu-text fw-bolder ms-2">PPM</span> -->
                     </a>
 
-                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <a href="javascript:void(0);"
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                 </div>
@@ -42,7 +49,7 @@ require_once('layouts/admin/header.php')
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/index_admin.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
@@ -72,7 +79,7 @@ require_once('layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                       <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
@@ -90,7 +97,8 @@ require_once('layouts/admin/header.php')
                         </a>
                     </li>
                     <!-- Components -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan
+                            Manusia</span></li>
 
                     <li class="menu-item">
                         <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
@@ -116,7 +124,7 @@ require_once('layouts/admin/header.php')
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
@@ -136,7 +144,8 @@ require_once('layouts/admin/header.php')
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                             <i class="bx bx-menu bx-sm"></i>
@@ -148,7 +157,10 @@ require_once('layouts/admin/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                                <form action="" method="GET">
+                                    <input type="text" name="query" placeholder="Search..."
+                                        style="border: none; padding: 0; background: none; font-size: inherit;">
+                                </form>
                             </div>
                         </div>
                         <!-- /Search -->
@@ -167,50 +179,83 @@ require_once('layouts/admin/header.php')
                     </div>
                 </nav>
 
-                <!-- / Navbar -->
-
-                <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
+
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Welcome To PPM!</h5>
-                                                <p class="mb-0 text-justify">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Elementum tempus egestas sed sed risus. Vulputate eu scelerisque felis imperdiet. Arcu risus quis varius quam quisque id diam vel. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Vitae justo eget magna fermentum iaculis eu. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Massa massa ultricies mi quis hendrerit dolor magna eget est. Sed augue lacus viverra vitae. Adipiscing diam donec adipiscing tristique risus nec feugiat. Leo vel fringilla est ullamcorper eget nulla. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Laoreet non curabitur gravida arcu.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="text-center mb-4">
-                                                <img src="http://localhost/ppmnew/assets/img/illustrations/man-with-laptop-light.png" height="200" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Pendidikan /</span> Table Pendidikan
+                        </h4>
+                        <div class="card-body">
+                            <a href="http://localhost/ppmnew/pendidikan_admin/tambah.php">
+                                <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
+                            </a>
+                        </div>
+                        <!-- Basic Table -->
+                        <div class="card">
+                            <h5 class="card-header">Pendidikan</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
 
-                            <!-- Stanting -->
-                            <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-                                <div class="card">
-                                    <div class="row row-bordered g-0">
-                                        <div class="col-md-12">
-                                            <h5 class="card-header m-0 me-2 pb-3">Stanting</h5>
-                                            <div id="chart1" class="px-2">
+                                            <!-- <th>Description</th> -->
+                                            <th>Data</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <?php
+                                        include('../connection.php');
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        $no = 1;
+
+                                        if (isset($_GET['query'])) {
+                                            $search_query = mysqli_real_escape_string($conn, $_GET['query']);
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                        } else {
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_pendidikan");
+                                        }
+
+                                        while ($data = mysqli_fetch_array($get_data)) {
+                                            ?>
+                                            <tr>
+                                                <td><i class="text-danger me-3"></i> <strong>
+                                                        <?= $data['judul']; ?>
+                                                    </strong></td>
+                                                <td>
+                                                    <?= $data['author']; ?>
+                                                </td>
+                                                <!-- <td>
+                                                    <?= $data['text']; ?>
+                                                </td> -->
+                                                <td>
+                                                    <a href="download.php?filename=<?= urlencode($data['data']); ?>">
+                                                        <?= $data['data']; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <?= $data['tanggal']; ?>
+                                                </td>
+                                                <td>
+                                                    <a href="edit.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-warning mr-1">Edit</a>
+                                                    <a href="detail.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-info mr-1">Detail</a>
+                                                    <a href="delete.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-danger mr-1"
+                                                        onclick="return confirm('Yakin ingin menghapus?');">Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- / Content -->
 
                     <?php
-                    require_once('layouts/admin/footer.php')
-                    ?>
+                    require_once('../layouts/admin/footer.php')
+                        ?>

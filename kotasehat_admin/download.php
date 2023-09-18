@@ -6,7 +6,7 @@ $filename = isset($_GET['filename']) ? $_GET['filename'] : '';
 if (!empty($filename)) {
     // Specify the directory path where your files are stored
 
-    $fileDirectory = '../assets/data/germas/';
+    $fileDirectory = '../assets/data/kotasehat/';
 
     // Combine the directory path and filename
     $filePath = $fileDirectory . $filename;

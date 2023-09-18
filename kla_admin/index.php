@@ -1,11 +1,5 @@
 <?php
-require_once('../connection.php');
-
-$title = 'Detail Kemiskinan';
-
-$id_kemiskinan = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM pm_kemiskinan WHERE id = '$id_kemiskinan'");
-$kemiskinan = mysqli_fetch_assoc($query);
+$title = 'KLA Admin';
 
 function getFileIcon($filename)
 {
@@ -23,12 +17,11 @@ function getFileIcon($filename)
 
     return isset($iconMapping[$extension]) ? $iconMapping[$extension] : 'far fa-file'; // Default icon for unknown extensions
 }
-
 ?>
 
 <?php
 require_once('../layouts/admin/header.php')
-?>
+    ?>
 
 <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -46,7 +39,8 @@ require_once('../layouts/admin/header.php')
                         <!-- <span class="app-brand-text demo menu-text fw-bolder ms-2">PPM</span> -->
                     </a>
 
-                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <a href="javascript:void(0);"
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                 </div>
@@ -72,71 +66,72 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="Germas">Germas</div>
                         </a>
                     </li>
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
-                            <div data-i18n="Stanting">Stunting</div>
+                            <div data-i18n="Stanting">Stanting</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/atm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
                     </li>
-                    <li class="menu-item ">
-                        <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
+                    <li class="menu-item">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/sdg_admin/index.php" class="menu-link">
+                        <a href=http://localhost/ppmnew/sdg_guest/index.php class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
                     </li>
                     <!-- Components -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan
+                            Manusia</span></li>
 
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-male-sign"></i>
                             <div data-i18n="Gender">Gender</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kla_admin/index.php" class="menu-link">
+                    <li class="menu-item active">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ipm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kebudayaan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
-                        <a href="http://localhost/ppmnew/kemiskinan_admin/index.php" class="menu-link">
+                    <li class="menu-item">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -149,7 +144,8 @@ require_once('../layouts/admin/header.php')
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                             <i class="bx bx-menu bx-sm"></i>
@@ -161,7 +157,10 @@ require_once('../layouts/admin/header.php')
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                                <form action="" method="GET">
+                                    <input type="text" name="query" placeholder="Search..."
+                                        style="border: none; padding: 0; background: none; font-size: inherit;">
+                                </form>
                             </div>
                         </div>
                         <!-- /Search -->
@@ -184,30 +183,79 @@ require_once('../layouts/admin/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kemiskinan / Table Kemiskinan /</span> Detail <?= $kemiskinan['judul']; ?></h4>
-                        <div class="row mb-5">
-                            <div class="col-md-6 col-lg-12">
-                                <h5 class="mt-2 text-muted"><?= $kemiskinan['judul']; ?></h5>
-                                <div class="card mb-4">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kemiskinan['author']; ?></li>
-                                        <li class="list-group-item">Date of Cases &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kemiskinan['tgl_kasus']; ?></li>
-                                        <li class="list-group-item">Number of Cases &nbsp;: <?= $kemiskinan['jumlah']; ?></li>
-                                        <li class="list-group-item">Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kemiskinan['text']; ?></li>
-                                        <li class="list-group-item">
-                                            Data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-                                            <a href="download.php?filename=<?= urlencode($kemiskinan['data']); ?>">
-                                                <i class="<?= getFileIcon($kemiskinan['data']); ?>"> </i>
-                                                <?= $kemiskinan['data']; ?>
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item">Upload Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $kemiskinan['tanggal']; ?></li>
-                                    </ul>
-                                </div>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">KLA /</span> Table KLA
+                        </h4>
+                        <div class="card-body">
+                            <a href="http://localhost/ppmnew/kla_admin/tambah.php">
+                                <button type="button" class="btn rounded-pill btn-primary">Add Data</button>
+                            </a>
+                        </div>
+                        <!-- Basic Table -->
+                        <div class="card">
+                            <h5 class="card-header">KLA</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+
+                                            <!-- <th>Description</th> -->
+                                            <th>Data</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <?php
+                                        include('../connection.php');
+
+                                        $no = 1;
+
+                                        if (isset($_GET['query'])) {
+                                            $search_query = mysqli_real_escape_string($conn, $_GET['query']);
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_kla WHERE judul LIKE '%$search_query%' OR data LIKE '%$search_query%'");
+                                        } else {
+                                            $get_data = mysqli_query($conn, "SELECT * FROM pm_kla");
+                                        }
+
+                                        while ($data = mysqli_fetch_array($get_data)) {
+                                            ?>
+                                            <tr>
+                                                <td><i class="text-danger me-3"></i> <strong>
+                                                        <?= $data['judul']; ?>
+                                                    </strong></td>
+                                                <td>
+                                                    <?= $data['author']; ?>
+                                                </td>
+                                                <!-- <td>
+                                                    <?= $data['text']; ?>
+                                                </td> -->
+                                                <td>
+                                                    <a href="download.php?filename=<?= urlencode($data['data']); ?>">
+                                                        <?= $data['data']; ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <?= $data['tanggal']; ?>
+                                                </td>
+                                                <td>
+                                                    <a href="edit.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-warning mr-1">Edit</a>
+                                                    <a href="detail.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-info mr-1">Detail</a>
+                                                    <a href="delete.php?id=<?= $data['id']; ?>"
+                                                        class="btn btn-sm rounded-pill btn-danger mr-1"
+                                                        onclick="return confirm('Yakin ingin menghapus?');">Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
 
                     <?php
                     require_once('../layouts/admin/footer.php')
-                    ?>
+                        ?>

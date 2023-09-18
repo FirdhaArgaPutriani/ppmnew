@@ -1,21 +1,39 @@
 <?php
-require_once('connection.php');
+require_once('../connection.php');
 
-session_start();
-if (isset($_SESSION['user'])) {
-    return header('Location: admin_index.php');
+$title = 'Input KLA';
+
+if (isset($_POST['submit'])) {
+    $target_dir     = '../assets/data/kla/';
+    $target_file    = $target_dir . $_FILES['file']['name'];
+    $uploadOk       = 1;
+    $fileType       = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    $allowedFormats = array('.docx', '.xlsx', '.ppt', 'image/*', '.xls', '.doc', '.txt', '.pdf');
+
+    if ($uploadOk == 0) {
+        echo 'Sorry, your file was not uploaded.';
+    } else {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+            
+            $judul  = $_POST['judul'];
+            $author = $_POST['author'];
+            $desc   = $_POST['deskripsi'];
+            $data   = $_FILES['file']['name'];
+            $tgl    = date('Y-m-d', strtotime('now'));
+
+            mysqli_query($conn, "INSERT INTO pm_kla (judul, author, text, data, tanggal) VALUES ('$judul', '$author', '$desc', '$data', '$tgl')");
+
+            if (mysqli_affected_rows($conn) > 0) {
+                return header('Location: index.php');
+            }
+        }
+    }
 }
- 
-
-$title = 'Home Admin';
-
-require_once('2020.php');
-require_once('2021.php');
-require_once('2022.php');
 ?>
 
 <?php
-require_once('layouts/admin/header.php')
+require_once('../layouts/admin/header.php')
 ?>
 
 <body>
@@ -42,7 +60,7 @@ require_once('layouts/admin/header.php')
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/index_admin.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
@@ -53,38 +71,38 @@ require_once('layouts/admin/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/germas_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
                             <div data-i18n="Stanting">Stanting</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/atm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/sdg_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
                             <div data-i18n="SDG">SDG</div>
                         </a>
@@ -93,37 +111,37 @@ require_once('layouts/admin/header.php')
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
 
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-male-sign"></i>
                             <div data-i18n="Gender">Gender</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kla_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ipm_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-map-pin"></i>
                             <div data-i18n="IPM">IPM</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kebudayaan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/pendidikan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kemiskinan_admin/index.php" class="menu-link">
+                        <a href="cards-basic.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Kemiskinan">Kemiskinan</div>
                         </a>
@@ -173,44 +191,45 @@ require_once('layouts/admin/header.php')
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">KLA / Table KLA /</span> Input Data</h4>
+
                         <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Welcome To PPM!</h5>
-                                                <p class="mb-0 text-justify">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Elementum tempus egestas sed sed risus. Vulputate eu scelerisque felis imperdiet. Arcu risus quis varius quam quisque id diam vel. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Vitae justo eget magna fermentum iaculis eu. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Massa massa ultricies mi quis hendrerit dolor magna eget est. Sed augue lacus viverra vitae. Adipiscing diam donec adipiscing tristique risus nec feugiat. Leo vel fringilla est ullamcorper eget nulla. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Laoreet non curabitur gravida arcu.
-                                                </p>
+                            <!-- Form controls -->
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <h5 class="card-header">Form Input</h5>
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="judul" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Tilte" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="author" class="form-label">Author</label>
+                                                <input type="text" class="form-control" id="author" name="author" placeholder="Author Name" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="date" class="form-label">Date</label>
+                                                <input class="form-control" type="text" id="date" nama="date" placeholder="<?= date('YmdHis'); ?>" readonly />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="deskripsi" class="form-label">Description</label>
+                                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="file" class="form-label">Input Data</label>
+                                                <input class="form-control" type="file" id="file" name="file" accept=".docx, .xlsx, .ppt, image/*, .xls, .doc, .txt, .pdf" multiple />
+                                            </div>
+                                            <div class="demo-inline-spacing">
+                                                <button type="submit" name="submit" id="submit" class="btn rounded-pill btn-primary">Save Data</button>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <div class="text-center mb-4">
-                                                <img src="http://localhost/ppmnew/assets/img/illustrations/man-with-laptop-light.png" height="200" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Stanting -->
-                            <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-                                <div class="card">
-                                    <div class="row row-bordered g-0">
-                                        <div class="col-md-12">
-                                            <h5 class="card-header m-0 me-2 pb-3">Stanting</h5>
-                                            <div id="chart1" class="px-2">
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- / Content -->
 
                     <?php
-                    require_once('layouts/admin/footer.php')
+                    require_once('../layouts/admin/footer.php')
                     ?>

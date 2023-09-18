@@ -144,13 +144,13 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/kebudayaan_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="http://localhost/ppmnew/pendidikanadmin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-reader"></i>
                             <div data-i18n="Pendidikan">Pendidikan</div>
                         </a>
