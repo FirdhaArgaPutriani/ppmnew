@@ -5,7 +5,6 @@ $filename = isset($_GET['filename']) ? $_GET['filename'] : '';
 
 if (!empty($filename)) {
     // Specify the directory path where your files are stored
-
     $fileDirectory = '../assets/data/sdg/';
 
     // Combine the directory path and filename
