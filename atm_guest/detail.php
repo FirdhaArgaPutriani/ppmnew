@@ -65,7 +65,7 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -77,8 +77,8 @@ require_once('../layouts/header.php')
                             <div data-i18n="Stanting">Stanting</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ATM_guest/index.php" class="menu-link">
+                    <li class="menu-item active">
+                        <a href="http://localhost/ppmnew/atm_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-laptop"></i>
                             <div data-i18n="ATM">ATM</div>
                         </a>
@@ -111,7 +111,7 @@ require_once('../layouts/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/ranham_guest/index.php" class="menu-link">
+                        <a href="http://localhost/ppmnew/kla_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart-down"></i>
                             <div data-i18n="KLA">KLA</div>
                         </a>

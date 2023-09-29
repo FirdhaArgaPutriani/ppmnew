@@ -72,10 +72,10 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="Germas">Germas</div>
                         </a>
                     </li>
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/stanting_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-street-view"></i>
-                            <div data-i18n="Stanting">Stunting</div>
+                            <div data-i18n="Stanting">Stanting</div>
                         </a>
                     </li>
                     <li class="menu-item">
@@ -85,12 +85,12 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                       <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
                     </li>
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/ranham_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-stats"></i>
                             <div data-i18n="Ranham">Ranham</div>
@@ -103,7 +103,8 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <!-- Components -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan
+                            Manusia</span></li>
 
                     <li class="menu-item">
                         <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">

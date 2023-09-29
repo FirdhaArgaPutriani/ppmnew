@@ -51,7 +51,8 @@ require_once('../layouts/admin/header.php')
                         <!-- <span class="app-brand-text demo menu-text fw-bolder ms-2">PPM</span> -->
                     </a>
 
-                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <a href="javascript:void(0);"
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                 </div>
@@ -71,7 +72,7 @@ require_once('../layouts/admin/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="http://localhost/ppmnew/germas_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -89,8 +90,8 @@ require_once('../layouts/admin/header.php')
                             <div data-i18n="ATM">ATM</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
+                    <li class="menu-item active">
+                       <a href="http://localhost/ppmnew/kotasehat_admin/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-building-house"></i>
                             <div data-i18n="Kota Sehat">Kota Sehat</div>
                         </a>
@@ -108,7 +109,8 @@ require_once('../layouts/admin/header.php')
                         </a>
                     </li>
                     <!-- Components -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan Manusia</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Pembangunan
+                            Manusia</span></li>
 
                     <li class="menu-item">
                         <a href="http://localhost/ppmnew/gender_admin/index.php" class="menu-link">
@@ -210,7 +212,7 @@ require_once('../layouts/admin/header.php')
                                             </div>
                                             <div class="mb-3">
                                                 <label for="date" class="form-label">Date</label>
-                                                <input class="form-control" type="text" id="date" nama="date" placeholder="<?= date('YmdHis'); ?>" readonly />
+                                                <input class="form-control" type="text" id="date" nama="date" placeholder="<?= date('Ymd'); ?>" readonly />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="deskripsi" class="form-label">Description</label>

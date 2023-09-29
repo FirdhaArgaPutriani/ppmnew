@@ -65,7 +65,7 @@ require_once('../layouts/header.php')
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Pemerintahan</span>
                     </li>
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="http://localhost/ppmnew/germas_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Germas">Germas</div>
@@ -122,7 +122,7 @@ require_once('../layouts/header.php')
                             <div data-i18n="IPM">IPM</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="http://localhost/ppmnew/kebudayaan_guest/index.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bookmark"></i>
                             <div data-i18n="Kebudayaan">Kebudayaan</div>
@@ -188,10 +188,10 @@ require_once('../layouts/header.php')
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kebudayaan / Article /</span> <?= $Kebudayaan['judul']; ?></h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kebudayaan / Article /</span> <?= $kebudayaan['judul']; ?></h4>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $Kebudayaan['judul']; ?></h5>
+                                <h5 class="card-title"><?= $kebudayaan['judul']; ?></h5>
                                 <div class="card-subtitle text-muted mb-3"><?= $kebudayaan['tanggal']; ?>, <?= $kebudayaan['author']; ?></div>
                                 <p class="card-text">
                                     <?= $kebudayaan['text']; ?>
