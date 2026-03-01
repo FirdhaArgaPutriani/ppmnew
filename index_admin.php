@@ -181,7 +181,7 @@ require_once('layouts/admin/header.php')
                                             <div class="card-body">
                                                 <h5 class="card-title text-primary">Welcome To PPM!</h5>
                                                 <p class="mb-0 text-justify">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Elementum tempus egestas sed sed risus. Vulputate eu scelerisque felis imperdiet. Arcu risus quis varius quam quisque id diam vel. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Vitae justo eget magna fermentum iaculis eu. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Massa massa ultricies mi quis hendrerit dolor magna eget est. Sed augue lacus viverra vitae. Adipiscing diam donec adipiscing tristique risus nec feugiat. Leo vel fringilla est ullamcorper eget nulla. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Laoreet non curabitur gravida arcu.
+                                                    Program Pengembangan Inovasi PPM merupakan inisiatif BAPPEDA dalam meningkatkan kapasitas desa melalui teknologi, pemberdayaan ekonomi, dan penguatan sistem administrasi berbasis digital.
                                                 </p>
                                             </div>
                                         </div>
